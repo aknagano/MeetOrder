@@ -1,0 +1,46 @@
+<%= content_tag :div,flash[:notice], style:"margin:20px 0 0 220px;" %>
+
+<%= render 'layouts/error', obj: @production_area %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+       <div class="col my-4">
+         <h5 class="bg-secondary" style="width: 190px;">産地一覧・追加</h5>
+       </div>
+    </div>
+
+    <div class="row ml-5 my-5">
+       <p class="font-weight-bold ml-4">産地名</p>
+    　 <%= form_with model: @production_area, url: '/admin/production_areas', method: :post do |f| %>
+           <%= f.text_field :name,class:"mx-5"%>
+           <%= f.submit '新規登録',class:"btn btn-success" %>
+       <% end %>
+    </div>
+
+    <div class="row mx-5">
+        <div class="col-md-7">
+            <table class="table">
+                <thead class="table-active">
+                    <tr>
+                      <th></th>
+                      <th><h5 class="font-weight-bold">産地</h5></th>
+                      <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                       <% @production_areas.each do |production_area| %>
+                       <tr>
+                       <td><%= production_area.name %></td>
+                       <td></td>
+                       <td>
+                        <%= link_to "編集する", edit_admin_production_area_path(production_area.id),class: "btn btn-success" %>
+                        <% end %>
+                       </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

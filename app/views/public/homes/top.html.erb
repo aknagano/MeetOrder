@@ -1,0 +1,41 @@
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 mt-5 mb-5 text-center">
+        <h2>ようこそ、MeetOrderへ！</h2>
+          このサイトは、お肉の販売のECサイトになります。
+          </p>
+
+      <h2>New Products</h2>
+      <div class="card-deck">
+        <%  @items.each do |item| %>
+          <div class="card shadow-sm cake-box text-center" style="max-width: 230px;">
+            <div class="card-img-top">
+            <%= link_to public_items_show_path(@item) do %>
+              <% if item.image.attached? %>
+                <%= image_tag item.image, style: 'width: 100%; height: 150px' %>
+              <% else %>
+                <%= image_tag 'no_cake', style: 'width: 100%; height: 150px' %>
+              <% end %><br>
+              </div>
+              <h5 class="card-title pt-2">
+                <%= item.name %>
+              </h5>
+            <% end %>
+            <div class="card-text">
+              <% if item.is_active == true %>
+                <p>￥<%= item.with_tax_price.to_i %></p>
+              <% else %>
+                <p class="text-muted">販売停止中</p>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <div class="text-right"><%= link_to "すべての商品を見る>>>", public_items_path %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

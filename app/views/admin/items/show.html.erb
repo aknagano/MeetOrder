@@ -1,0 +1,34 @@
+<h5 class="bg-secondary" style="width: 150px; margin:30px 0 20px 200px;">商品詳細</h5>
+<div class="row">
+
+  <div class="col-lg-5 mt-4 ">
+    <div class="float-right", style="height: 300px;">
+      <%= image_tag @item.image, size: "300x250" %>
+    </div>  
+  </div>
+  <div class="col-lg-6">
+  <table style="height: 300px;">
+  <tr>
+    <th>商品名</th>
+    <td><%= @item.name%></td>
+  </tr>
+  <tr>
+    <th>商品説明</th>
+    <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <th>産地</th>
+    <td><%= @item.production_area.name %></td>
+  </tr>
+  <tr>
+    <th>税込価格</th>
+    <td><%= @item.with_tax_price %></td>
+  </tr>
+  <tr>
+    <th>販売ステータス</th>
+    <td><%= @item.on_sale? ? '販売中' : '販売停止中' %></td>
+  </tr>
+</table>
+ <%= link_to "この商品を編集する", edit_admin_item_path(@item),class: "btn btn-success" %>
+ </div>
+</div>

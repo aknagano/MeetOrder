@@ -1,0 +1,62 @@
+<h1>Public::Items#show</h1>
+<p>Find me in app/views/public/items/show.html.erb</p>
+
+<div class="container">
+  <% if flash[:notice] %>
+    <div class="alert alert-danger">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="row mt-5">
+        <div class="col-sm-5 px-sm-0">
+          <% if @item.image.attached? %>
+            <%= image_tag @item.image, size: "210x180" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", size: "210x180" %>
+          <% end %>
+        </div>
+        <div class="col-sm-6 px-sm-0">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">商品名</th>
+                <td><%= @item.name %></td>
+              </tr>
+              <tr>
+                <th scope="row">商品説明</th>
+                <td><%= simple_format(@item.introduction) %></td>
+              </tr>
+              <tr>
+                <th scope="row">販売ステータス</th>
+                <td>
+                  <% if @item.is_active == true %>
+                    <span style="color: green;">販売中</span>
+                  <% else %>
+                    <span style="color: red;">販売停止</span>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pt-3">
+                  <% if @item.is_active == true %>
+                    <%= form_with model: @cart_item, url: cart_items_path, local: true, class: "d-flex justify-content-start" do |f| %>
+                      <%= f.hidden_field :item_id, value: @item.id %>
+                      <div class="mr-2">
+                        <%= f.select :amount, options_for_select([['選択してください',nil]] + (1..10).to_a), {}, {class: "form-control form-control-sm"} %>
+                      </div>
+                      <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success" %>
+                    <% end %>
+                  <% else %>
+                    <p class="mt-3">商品は販売中止しています</p>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

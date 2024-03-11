@@ -1,0 +1,58 @@
+<header>
+  <div class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-lg">
+      <div class="row align-items-center">
+        <div class="col-md-2">
+          <% if admin_signed_in? %>
+            <div class="navbar-brand">ながのCAKE</div>
+          <% else %>
+           <%= link_to public_root_path do %>
+             <div class="navbar-brand">ながのCAKE</div>
+           <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-3 text-center">
+          <!-- 中央にようこそ〇〇さん！を配置 -->
+          <% if customer_signed_in? %>
+            <div class="text-light">ようこそ <%= current_customer.enterprise_name %> さん！</div>
+          <% end %>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- 上段にナビゲーションを配置 -->
+              <div class="navbar-nav">
+                <% if admin_signed_in? %>
+                  <%= link_to "商品一覧", admin_items_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "会員一覧", admin_customers_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "注文履歴一覧", admin_root_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "産地一覧", admin_production_areas_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-item nav-link text-light' %>
+                <% elsif request.fullpath.include?("/admin") %>
+                  <%#= link_to "About", public_about_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "商品一覧", admin_items_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "新規登録", new_admin_registration_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "ログイン", new_admin_session_path, class: 'nav-item nav-link text-light' %>
+                <% elsif customer_signed_in? %>
+                  <%#= link_to "マイページ", customers_my_page_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "商品一覧", public_items_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "カート", public_cart_items_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-item nav-link text-light' %>
+                <% else %>
+                  <%= link_to "About", public_homes_about_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "商品一覧", public_items_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "ログイン", new_customer_session_path, class: 'nav-item nav-link text-light' %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <!-- 下段に検索枠を配置 -->
+              <%#= render 'layouts/search' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

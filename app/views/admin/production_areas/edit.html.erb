@@ -1,0 +1,18 @@
+<%= render 'layouts/error', obj: @production_area %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+       <div class="col my-4">
+         <h5 class="bg-secondary" style="width: 130px;">産地編集</h5>
+       </div>
+    </div>
+
+    <div class="row ml-5 my-5">
+      <p class="font-weight-bold ml-4">産地名</p>
+      <%= form_with model: @production_area, url: admin_production_area_path(@production_area.id), method: :patch do |f| %>
+        <%= f.text_field :name,class:"mx-5"%>
+        <%= f.submit '変更を保存',class:"btn btn-success" %>
+      <% end %>
+   </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row py-4 px-auto">
+    <div class="col-lg-12">
+      <h2>商品一覧</h2>
+      <div class="text-right">
+        <%= link_to new_admin_item_path do %>
+          <button type="button" class="btn-outline-dark btn-circle btn-lg">+</button>
+        <% end %>
+      </div>
+      <table class="table table-borderless text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>産地</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td><%= number_with_delimiter(item.price) %></td>  
+            <!--number_with_delimiter 数値を表示する際に3桁ごとにカンマを追加-->
+            <td><%#= item.producing_area.name %></td>
+            <td class="text-success"><%= item.on_sale? ? '販売中' : '販売停止中' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="nav justify-content-center">
+        <%#= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
