@@ -4,10 +4,10 @@
       <div class="row align-items-center">
         <div class="col-md-2">
           <% if admin_signed_in? %>
-            <div class="navbar-brand">ながのCAKE</div>
+            <div class="navbar-brand">Meet Order</div>
           <% else %>
            <%= link_to public_root_path do %>
-             <div class="navbar-brand">ながのCAKE</div>
+             <div class="navbar-brand">Meet Order</div>
            <% end %>
           <% end %>
         </div>
@@ -29,12 +29,12 @@
                   <%= link_to "産地一覧", admin_production_areas_path, class: 'nav-item nav-link text-light' %>
                   <%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-item nav-link text-light' %>
                 <% elsif request.fullpath.include?("/admin") %>
-                  <%#= link_to "About", public_about_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "About", public_homes_about_path, class: 'nav-item nav-link text-light' %>
                   <%= link_to "商品一覧", admin_items_path, class: 'nav-item nav-link text-light' %>
                   <%= link_to "新規登録", new_admin_registration_path, class: 'nav-item nav-link text-light' %>
                   <%= link_to "ログイン", new_admin_session_path, class: 'nav-item nav-link text-light' %>
                 <% elsif customer_signed_in? %>
-                  <%#= link_to "マイページ", customers_my_page_path, class: 'nav-item nav-link text-light' %>
+                  <%= link_to "マイページ", public_customer_path(current_customer.id), class: 'nav-item nav-link text-light' %>
                   <%= link_to "商品一覧", public_items_path, class: 'nav-item nav-link text-light' %>
                   <%= link_to "カート", public_cart_items_path, class: 'nav-item nav-link text-light' %>
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-item nav-link text-light' %>

@@ -51,6 +51,7 @@ end
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     
     # get 'cart_items/index'
+    delete 'cart_items/destroy_all', as:'destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
     
     # get 'customers/show'

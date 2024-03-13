@@ -24,8 +24,14 @@
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
             <td><%= number_with_delimiter(item.price) %></td>  
             <!--number_with_delimiter 数値を表示する際に3桁ごとにカンマを追加-->
-            <td><%#= item.producing_area.name %></td>
-            <td class="text-success"><%= item.on_sale? ? '販売中' : '販売停止中' %></td>
+            <td><%= item.production_area.name %></td>
+            <td>
+              <% if item.is_active == true %>
+                <p class="text-success font-weight-bold">販売中</p>
+              <% else %>
+                <p class="text-danger font-weight-bold">販売停止中</p>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <td><%= f.label :ジャンル %></td>
-          <td><%= f.select :production_area_id, options_from_collection_for_select(@production_areas, :id, :name), include_blank: "選択してください" %></td>
+          <td><%= f.select :production_area_id, options_from_collection_for_select(@production_areas, :id, :name) %></td>
         </tr>
         <tr>
           <td><%= f.label :税抜価格 %></td>
@@ -33,15 +33,11 @@
     <tr>
       <td><%= f.label :is_active, '販売ステータス'%></td>
         <td>
-          <div class="custom-control custom-radio custom-control-inline">
-            <%= f.radio_button :is_active, 'on_sale', checked: @item.is_active == 'on_sale', class: 'custom-control-input', id: 'is_active-on-sale' %>
-            <%= f.label :is_active, '販売中', class: 'custom-control-label', for: 'is_active-on-sale' %>
-          </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            <%= f.radio_button :is_active, 'off_sale', checked: @item.is_active == 'off_sale', class: 'custom-control-input', id: 'is_active-off-sale' %>
-            <%= f.label :is_active, '販売停止中', class: 'custom-control-label', for: 'is_active-off-sale' %>
-        </div>
-        </td>
+          <%= f.radio_button :is_active, true, checked: true %>
+          <%= f.label :is_active, "販売中" %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "販売停止中" %>
+         </td>
       </tr>
     </div>
    </table>

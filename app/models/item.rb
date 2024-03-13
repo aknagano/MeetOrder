@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :production_area_id, presence: true
   
   has_one_attached :image
-  enum is_active: { on_sale: 0, off_sale: 1 }
+  # enum is_active: { on_sale: 0, off_sale: 1 }
   
   def with_tax_price
     (price * 1.1).floor
