@@ -63,6 +63,11 @@ end
     get 'items/show'
     resources :items, only: [:index, :show]
     
+    # get 'orders/confirm'
+    get 'orders/thanks', as: 'thanks'
+    post 'orders/confirm'
+    resources :orders,only: [:new, :index, :show, :create]
+    
     root to: 'homes#top'
     # get 'homes/top'
     get 'homes/about'

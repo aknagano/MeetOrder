@@ -39,7 +39,7 @@
               <tr>
                 <td colspan="2" class="pt-3">
                   <% if @item.is_active == true %>
-                    <%= form_with model: @cart_item, url: cart_items_path, local: true, class: "d-flex justify-content-start" do |f| %>
+                    <%= form_with model: @cart_item, url: public_cart_items_path, local: true, class: "d-flex justify-content-start" do |f| %>
                       <%= f.hidden_field :item_id, value: @item.id %>
                       <div class="mr-2">
                         <%= f.select :amount, options_for_select([['選択してください',nil]] + (1..10).to_a), {}, {class: "form-control form-control-sm"} %>
