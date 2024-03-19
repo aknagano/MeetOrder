@@ -55,6 +55,12 @@
             <%= @order.name %>
           </td>
         </tr>
+        <tr>
+          <th>納品日</th>
+          <td>
+            <%= @order.delivery_date %>
+          </td>
+        </tr>
       </table>
     </div>
   </div>
@@ -68,6 +74,7 @@
   <%= f.hidden_field :total_payment, value: @sum + 1000%>
   <%= f.hidden_field :address, value: @order.address%>
   <%= f.hidden_field :name, value: @order.name %>
+  <%= f.hidden_field :delivery_date, value: @order.delivery_date %>
   <%= f.hidden_field :order_status, value: "wait_payment"%>
   <%= f.submit "注文を確定する" %>
 <% end %>

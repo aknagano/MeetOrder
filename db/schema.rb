@@ -106,11 +106,15 @@ ActiveRecord::Schema.define(version: 2024_03_11_082106) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.integer "user_id"
+    t.integer "admin_id"
+    t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "admin_id"
-    t.integer "customer_id"
-    t.integer "room_id"
+    t.index ["admin_id"], name: "index_messages_on_admin_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -126,14 +130,15 @@ ActiveRecord::Schema.define(version: 2024_03_11_082106) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "post_code"
-    t.string "address"
-    t.string "name"
+    t.string "post_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.integer "shipping_cost"
     t.integer "total_payment"
-    t.integer "payment_method"
+    t.integer "payment_method", null: false
     t.integer "customer_id"
     t.integer "order_status", default: 0, null: false
+    t.datetime "delivery_date", null: false
   end
 
   create_table "production_areas", force: :cascade do |t|
@@ -145,10 +150,15 @@ ActiveRecord::Schema.define(version: 2024_03_11_082106) do
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "entry_id"
+    t.integer "reservation_id", null: false
     t.integer "message_id"
+    t.index ["reservation_id"], name: "index_rooms_on_reservation_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "messages", "admins"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "rooms", "reservations"
 end

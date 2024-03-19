@@ -1,11 +1,11 @@
 class CreateMessages < ActiveRecord::Migration[6.1]
   def change
     create_table :messages do |t|
-
+      t.references :room, null: false, foreign_key: true #追加
+      t.references :user, foreign_key: true #追加 NOT NULL制約はつけない
+      t.references :admin, foreign_key: true #追加 NOT NULL制約はつけない
+      t.text :message, null: false
       t.timestamps
-      t.integer :admin_id
-      t.integer :customer_id
-      t.integer :room_id
     end
   end
 end

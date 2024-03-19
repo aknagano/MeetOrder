@@ -1,0 +1,8 @@
+<div>Userチャットルームの一覧</div>
+<% @entries.each do |entry| %>
+  <div>
+    <%= entry.customer.name %>
+    <%= entry.day %>
+    <%= link_to "DM", room_path(entry) %>
+  </div>
+<% end %>

@@ -41,6 +41,9 @@ end
     # get 'items/show'
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     
+    resources :rooms, only: %i(index show)
+    resource :message, only: :create
+    
     # get 'homes/top'
     root to: 'homes#top'
   end
@@ -71,6 +74,9 @@ end
     root to: 'homes#top'
     # get 'homes/top'
     get 'homes/about'
+    
+    resources :rooms, only: %i(index show)
+    resource :message, only: :create
     
   end
   

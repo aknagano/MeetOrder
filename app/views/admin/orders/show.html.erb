@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <td>支払い方法</td>
-        <td><%= @order.payment_method_i18n%></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <td>注文ステータス</td>
@@ -60,7 +60,7 @@
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.subtotal %></td>
             <td>
-              <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert,{selected: order_detail.making_status} %>
+              <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
               <%= f.submit "更新", class: "btn btn-success" %>
             </td>
           </tr>

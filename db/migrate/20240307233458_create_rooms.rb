@@ -3,7 +3,7 @@ class CreateRooms < ActiveRecord::Migration[6.1]
     create_table :rooms do |t|
 
       t.timestamps
-      t.integer :entry_id
+      t.references :reservation, null: false, foreign_key: true #追加
       t.integer :message_id
     end
   end

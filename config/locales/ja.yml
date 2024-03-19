@@ -1,9 +1,4 @@
 ja:
-  time:
-    formats:
-      default: "%Y/%m/%d"
-      
-  
   enums:
     order:
       order_status:
@@ -12,12 +7,18 @@ ja:
         making: '製作中'
         preparing_ship: '発送準備中'
         finish_prepare: '発送済み'
+        
       payment_method:
         credit_card: "クレジットカード"
         transfer: '銀行振込'
-    order_detail:
+      order_detail:
       making_status:
         making_unable: "着手不可"
         waiting_for_making: "製作待ち"
         in_making: "製作中"
         making_completed: "製作完了"
+        
+      
+  time:
+    formats:
+      default: "%Y/%m/%d"
