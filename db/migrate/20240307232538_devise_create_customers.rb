@@ -8,9 +8,9 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.string :enterprise_name, null: false, default: ""
       t.string :enterprise_name_kana, null: false, default: ""
-      t.integer :post_code, null: false, default: ""
+      t.integer :post_code, null: false
       t.string :address, null: false, default: ""
-      t.integer :telephone_number, null: false, default: ""
+      t.integer :telephone_number, null: false
       t.boolean :is_customer_status, null: false, default: true
 
       ## Recoverable
