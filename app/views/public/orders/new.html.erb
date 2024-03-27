@@ -36,7 +36,7 @@
         </table>
         
         <h5>納品日</h5>
-          <div><%= f.date_field :delivery_date, min: Time.zone.now, class: "h-12 rounded-[3px] text-[#333333] font-bold invalid:text-line-200" %></div>
+          <div><%= f.date_field :delivery_date, min: Date.tomorrow + 1, class: "h-12 rounded-[3px] text-[#333333] font-bold invalid:text-line-200" %></div>
     
       <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
     <% end %>

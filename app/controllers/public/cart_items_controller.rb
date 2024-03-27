@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
     # 数量が選択されているかどうかのチェック
     if params[:cart_item][:amount].blank?
       flash[:notice] = '数量を選択してください。'  
-      redirect_to item_path(params[:cart_item][:item_id]) and return
+      redirect_to public_item_path(params[:cart_item][:item_id]) and return
     end
   
     cart_item = CartItem.new(cart_item_params)
@@ -42,12 +42,12 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
-    redirect_to cart_items_path
+    redirect_to public_cart_items_path
   end
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to cart_items_path
+    redirect_to public_cart_items_path
   end
 
   private

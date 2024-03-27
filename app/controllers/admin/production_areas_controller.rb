@@ -11,6 +11,7 @@ class Admin::ProductionAreasController < ApplicationController
     if @production_area.save
       redirect_to admin_production_areas_path
     else
+      flash[:alert] = "産地を入力してください。"
       @production_area = ProductionArea.new
       @production_areas = ProductionArea.all
       render :index

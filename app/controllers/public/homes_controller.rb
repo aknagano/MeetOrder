@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, only: [:top]
   def top
     #商品を新着順に４件表示する
     @items = Item.order(created_at: :desc).limit(4)

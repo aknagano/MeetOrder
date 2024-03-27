@@ -3,7 +3,11 @@
 
   <div class="col-lg-5 mt-4 ">
     <div class="float-right", style="height: 300px;">
-      <%= image_tag @item.image, size: "300x250" %>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x250" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300x250" %>
+      <% end %>
     </div>  
   </div>
   <div class="col-lg-6">
@@ -28,9 +32,9 @@
     <th>販売ステータス</th>
     <td> 
       <% if @item.is_active %>
-        <p class="text-success">販売中</p>
+        <span class="text-success">販売中</span>
       <% else %>
-        <p class="text-danger">販売停止中です</p>
+        <span class="text-danger">販売停止中です</span>
       <% end %>
     </td>
   </tr>

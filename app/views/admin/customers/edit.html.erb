@@ -58,8 +58,9 @@
                        <tr>
                            <td>会員ステータス</td>
                            <td>
-                               <%= f.radio_button :is_customer_status, :active %><%= f.label :is_customer_status,"有効" %>&emsp;
-                               <%= f.radio_button :is_customer_status, :inactive %><%= f.label :is_customer_status,"退会" %>
+                               <%= f.collection_radio_buttons :is_customer_status, [[true, '有効'], [false, '無効']], :first, :last %>
+                               <%#= f.radio_button :is_customer_status, :active %><%#= f.label :is_customer_status,"有効" %>&emsp;
+                               <%#= f.radio_button :is_customer_status, :inactive %><%#= f.label :is_customer_status,"退会" %>
                            </td>
                            <td></td>
                        </tr>

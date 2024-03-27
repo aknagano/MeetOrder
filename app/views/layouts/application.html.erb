@@ -13,15 +13,25 @@
   
   <style>
     header{
-      background-color: #ADD8E6;
+      background-color: #FFC0CB;
       color:  #808080;
       padding: 20px;
     }
   </style>
-
-  <body style="background-color: #FFFFE0;">
+  
+  <body class="d-flex flex-column min-vh-100" style="background-color: #FFFFE0;">
     <%= render 'layouts/header' %>
-    <main>
+    <% if notice %>
+      <div class="alert alert-warning" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+    <main class="flex-grow-1">
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

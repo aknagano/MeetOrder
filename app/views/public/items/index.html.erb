@@ -16,7 +16,7 @@
                 <%= image_tag 'no_image', size: "200x150" %>
               <% end %>
               <div class="card-body">
-                <p class="item-details item-name card-text"><%= item.name %></p>
+                <p class="item-details item-name card-text"><%= link_to item.name, public_item_path(item) %></p>
                 <% if item.is_active %>
                   <p class="item-details card-text"><%= item.price %>円(税抜)</p>
                 <% else %>

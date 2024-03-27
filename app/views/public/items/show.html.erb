@@ -1,10 +1,5 @@
 
 <div class="container">
-  <% if flash[:notice] %>
-    <div class="alert alert-danger">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
   <div class="row">
     <div class="col-sm-9">
       <div class="row mt-5">
@@ -20,15 +15,20 @@
             <tbody>
               <tr>
                 <th scope="row">商品名</th>
-                <td><%= @item.name %></td>
+                <td class="my-4 text-center"><%= @item.name %></td>
               </tr>
               <tr>
                 <th scope="row">商品説明</th>
-                <td><%= simple_format(@item.introduction) %></td>
+                <td class="my-4 text-center"><%= simple_format(@item.introduction) %></td>
               </tr>
               <tr>
+                <th scope="row">税込価格</th>
+                <td class="my-4 text-center">￥<%= @item.with_tax_price.to_i %>(税込)</td>
+              </tr>
+              <tr>
+              <tr>
                 <th scope="row">販売ステータス</th>
-                <td>
+                <td class="my-4 text-center">
                   <% if @item.is_active == true %>
                     <span style="color: green;">販売中</span>
                   <% else %>

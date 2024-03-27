@@ -19,6 +19,10 @@ devise_scope :admin do
   get '/admin/sign_out' => 'devise/sessions#destroy'
 end
 
+devise_scope :customer do
+  post "/customers/guest_sign_in", to: "public/sessions#guest_sign_in"
+end
+
   
   #namespace :admin doはルーティングをグループ化するための機能
   namespace :admin do
@@ -43,6 +47,10 @@ end
     
     resources :rooms, only: %i(index show)
     resource :message, only: :create
+    
+    get '/contact/:customer_id' => 'messages#show', as: :contact
+    post '/contact/:customer_id' => 'messages#create'
+    get '/messages' => 'messages#index'
     
     # get 'homes/top'
     root to: 'homes#top'
@@ -75,6 +83,8 @@ end
     # get 'homes/top'
     get 'homes/about'
     
+    get '/contact' => 'messages#show'
+    post '/contact' => 'messages#create'
     resources :rooms, only: %i(index show)
     resource :message, only: :create
     

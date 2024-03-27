@@ -1,2 +1,8 @@
 <div>Adminチャットルームの一覧</div>
-
+<% @entries.each do |entry| %>
+  <div>
+    <%= entry.customer.enterprise_name %>
+    <%= entry.day %>
+    <%= link_to "DM", admin_room_path(entry) %>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@
    <div class="col-2"></div>
       <div class="col-6">
 
-<%= form_with(model: @item, url: '/admin/items', local: true) do |f| %>
+<%= form_with(model: @item, url: '/admin/items', local: false, multipart: true) do |f| %>
   <table>
     <tr>
       <td><%= f.label :商品画像 %></td>
