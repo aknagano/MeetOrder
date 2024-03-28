@@ -7,7 +7,7 @@ class Admin::ItemsController < ApplicationController
   
   def create
       @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to admin_item_path(@item.id)
     else
       @production_areas = ProductionArea.all
@@ -26,7 +26,7 @@ class Admin::ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-     if @item.update(item_params)
+     if @item.update!(item_params)
        redirect_to admin_item_path(@item.id)
      else
        @item = Item.find(params[:id])

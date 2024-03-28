@@ -33,10 +33,7 @@
     <tr>
       <td><%= f.label :is_active, '販売ステータス'%></td>
         <td>
-          <%= f.radio_button :is_active, true, checked: true %>
-          <%= f.label :is_active, "販売中" %>
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "販売停止中" %>
+          <%= f.collection_radio_buttons :is_active, [[true, '販売中'], [false, '販売停止中']], :first, :last %>
          </td>
       </tr>
     </div>

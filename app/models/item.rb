@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-  validates :is_active, presence: true
+  validates :is_active, inclusion:{in: [true, false]}
   validates :production_area_id, presence: true
   
   has_one_attached :image
