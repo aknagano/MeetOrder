@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 # 「devise_scope」メソッドは、Deviseが提供するセッション関連の機能をカスタマイズ
 devise_scope :admin do
   get '/admin/sign_out' => 'devise/sessions#destroy'
+  get ENV['ADMIN_ROUTING'] => 'devise/registrations#new'
 end
 
 devise_scope :customer do

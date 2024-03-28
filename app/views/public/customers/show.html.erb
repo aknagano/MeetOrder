@@ -5,8 +5,12 @@
    <h1 class="head-line title_h2">マイページ</h1>
     <div class="text-left d-flex flex-row mb-3">
       <h3>登録情報</h3>
-      <span class="mx-3"><%= link_to "編集する", edit_public_customer_path(@customer), class: 'btn btn-success' %></span> <!-- 緑の編集ボタン（Fontawesome）-->
+      <% if @customer.email == 'guest@example.com'%>
+      <% else %>
+        <span class="mx-3"><%= link_to "編集する", edit_public_customer_path(@customer), class: 'btn btn-success' %></span> <!-- 緑の編集ボタン（Fontawesome）-->
+      <% end %>
     </div>
+      
 
     <table class="table table-bordered ">
       <tbody>

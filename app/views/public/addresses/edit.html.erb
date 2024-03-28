@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1 title mt-5">
+      <%= render 'layouts/error', obj: @address %>
       <h2 class="bg-origin">配送先編集</h2>
     </div>
-    <%= render 'layouts/error', obj: @address %>
+    
     
     <%= form_with model: @address, url: public_address_path(@address.id), local:true,  method: :patch do |f| %>
     <table>
